@@ -17,6 +17,7 @@ internal extension Response {
         responseData["canonicalUrl"] = canonicalUrl
         responseData["title"] = title
         responseData["description"] = description
+        responseData["site_name"] = siteName
         responseData["images"] = images
         responseData["image"] = image
         responseData["icon"] = icon
@@ -31,6 +32,7 @@ internal extension Response {
         case canonicalUrl
         case title
         case description
+        case siteName
         case image
         case images
         case icon
@@ -50,6 +52,8 @@ internal extension Response {
             if let value = value as? String { self.title = value }
         case Key.description:
             if let value = value as? String { self.description = value }
+        case Key.siteName:
+            if let value = value as? String { self.siteName = value }
         case Key.image:
             if let value = value as? String { self.image = value }
         case Key.images:
@@ -75,6 +79,8 @@ internal extension Response {
             return self.title
         case Key.description:
             return self.description
+        case Key.siteName:
+            return self.siteName
         case Key.image:
             return self.image
         case Key.images:

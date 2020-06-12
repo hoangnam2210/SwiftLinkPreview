@@ -33,6 +33,7 @@ open class SwiftLinkPreview: NSObject {
     // MARK: - Vars
     static let titleMinimumRelevant: Int = 15
     static let decriptionMinimumRelevant: Int = 100
+    static let siteNameMinimumRelevant: Int = 15
 
     public var session: URLSession
     public let workQueue: DispatchQueue
@@ -132,6 +133,7 @@ open class SwiftLinkPreview: NSObject {
 
                                 result.title = $0.title
                                 result.description = $0.description
+                                result.siteName = $0.siteName
                                 result.image = $0.image
                                 result.images = $0.images
                                 result.icon = $0.icon
@@ -319,6 +321,7 @@ extension SwiftLinkPreview {
 
             result.title = ""
             result.description = ""
+            result.siteName = ""
             result.images = [url.absoluteString]
             result.image = url.absoluteString
 
@@ -554,6 +557,21 @@ extension SwiftLinkPreview {
             let value: String = self.crawlCode(htmlCode, minimum: SwiftLinkPreview.decriptionMinimumRelevant)
             if !value.isEmpty {
                 result.description = value.decoded.extendedTrim
+            }
+        }
+
+        return (htmlCode, result)
+    }
+    
+    // Crawl for siteName if needed
+    internal func crawlSiteName(_ htmlCode: String, result: Response) -> (htmlCode: String, result: Response) {
+        var result = result
+        let siteName = result.siteName
+
+        if siteName == nil || siteName?.isEmpty ?? true {
+            let value: String = self.crawlCode(htmlCode, minimum: SwiftLinkPreview.siteNameMinimumRelevant)
+            if !value.isEmpty {
+                result.siteName = value.decoded.extendedTrim
             }
         }
 

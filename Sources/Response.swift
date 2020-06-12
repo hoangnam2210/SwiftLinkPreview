@@ -15,6 +15,7 @@ public struct Response {
     public internal(set) var canonicalUrl: String?
     public internal(set) var title: String?
     public internal(set) var description: String?
+    public internal(set) var siteName: String?
     public internal(set) var images: [String]?
     public internal(set) var image: String?
     public internal(set) var icon: String?
