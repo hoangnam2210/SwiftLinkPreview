@@ -487,6 +487,7 @@ extension SwiftLinkPreview {
         let possibleTags: [String] = [
             Response.Key.title.rawValue,
             Response.Key.description.rawValue,
+            Response.Key.siteName.rawValue,
             Response.Key.image.rawValue,
             Response.Key.video.rawValue,
         ]
