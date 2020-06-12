@@ -487,7 +487,7 @@ extension SwiftLinkPreview {
         let possibleTags: [String] = [
             Response.Key.title.rawValue,
             Response.Key.description.rawValue,
-            Response.Key.siteName.rawValue,
+            Response.Key.site_name.rawValue,
             Response.Key.image.rawValue,
             Response.Key.video.rawValue,
         ]
@@ -498,6 +498,7 @@ extension SwiftLinkPreview {
             for tag in possibleTags {
                 if (metatag.range(of: "property=\"og:\(tag)") != nil ||
                     metatag.range(of: "property='og:\(tag)") != nil ||
+                    metatag.range(of: "property=og:\(tag)") != nil ||
                     metatag.range(of: "name=\"twitter:\(tag)") != nil ||
                     metatag.range(of: "name='twitter:\(tag)") != nil ||
                     metatag.range(of: "name=\"\(tag)") != nil ||
