@@ -37,24 +37,26 @@ extension String {
     // Decode HTML entities
     var decoded: String {
 
-        let encodedData = self.data(using: String.Encoding.utf8)!
-        let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] =
-            [
-            .documentType: NSAttributedString.DocumentType.html,
-            .characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)
-        ]
+    	return self
 
-        do {
+        // let encodedData = self.data(using: String.Encoding.utf8)!
+        // let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] =
+        //     [
+        //     .documentType: NSAttributedString.DocumentType.html,
+        //     .characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)
+        // ]
 
-            let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+        // do {
 
-            return attributedString.string
+        //     let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
 
-        } catch _ {
+        //     return attributedString.string
 
-            return self
+        // } catch _ {
 
-        }
+        //     return self
+
+        // }
 
     }
 
